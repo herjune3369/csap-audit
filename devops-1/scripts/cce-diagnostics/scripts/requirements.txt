@@ -1,0 +1,23 @@
+# GPT-OSS-20B 기반 로컬 LLM 시스템
+# 기존 google-generativeai 제거, 로컬 모델 실행을 위한 패키지 추가
+
+# 기본 웹 프레임워크
+flask>=2.3.0
+werkzeug>=2.3.0
+
+# 데이터 처리
+pandas>=1.5.0
+openpyxl>=3.0.0
+xlsxwriter>=3.0.0
+
+# 로컬 LLM 실행 (Ollama)
+# ollama는 별도 설치 필요: curl -fsSL https://ollama.ai/install.sh | sh
+
+# 시스템 모니터링
+psutil>=5.9.0
+
+# 로깅 및 유틸리티
+python-dotenv>=1.0.0
+
+# 타입 힌트 지원
+typing-extensions>=4.0.0 

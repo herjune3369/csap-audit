@@ -1,0 +1,979 @@
+[
+  {
+    "index": 0,
+    "original_item": {
+      "CCE_ID": "CCE-0001",
+      "점검항목": "root 계정 원격 접속 제한",
+      "결과": "양호",
+      "현황": "PermitRootLogin is set to no",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "PermitRootLogin is set to no",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0001\n● 점검 항목: root 계정 원격 접속 제한\n● 결과: 양호\n● 현황: PermitRootLogin is set to no\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "root 계정 원격 접속 제한는 현재 적절하게 설정되어 있습니다. PermitRootLogin is set to no",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "root 계정 원격 접속 제한는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0001"
+    }
+  },
+  {
+    "index": 1,
+    "original_item": {
+      "CCE_ID": "CCE-0002",
+      "점검항목": "패스워드 복잡도 설정",
+      "결과": "취약",
+      "현황": "Password complexity is not properly configured (minlen: 6)",
+      "개선방안": "패스워드 최소 길이를 8자 이상으로 설정하고 pam_pwquality 모듈을 활성화하십시오. (/etc/login.defs, /etc/pam.d/common-password)",
+      "detail": "Password complexity is not properly configured (minlen: 6)",
+      "remediation": "패스워드 최소 길이를 8자 이상으로 설정하고 pam_pwquality 모듈을 활성화하십시오. (/etc/login.defs, /etc/pam.d/common-password)"
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0002\n● 점검 항목: 패스워드 복잡도 설정\n● 결과: 취약\n● 현황: Password complexity is not properly configured (minlen: 6)\n● 개선방안: 패스워드 최소 길이를 8자 이상으로 설정하고 pam_pwquality 모듈을 활성화하십시오. (/etc/login.defs, /etc/pam.d/common-password)\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "패스워드 복잡도 설정에 보안 취약점이 발견되었습니다. Password complexity is not properly configured (minlen: 6)",
+        "공격시나리오": "이 취약점을 이용하여 공격자가 패스워드 복잡도 설정을 악용할 수 있습니다.",
+        "비전문가설명": "패스워드 복잡도 설정가 제대로 설정되지 않아 보안 위험이 있습니다. 즉시 수정이 필요합니다.",
+        "조치방법": [
+          "1단계: 패스워드 최소 길이를 8자 이상으로 설정하고 pam_pwquality 모듈을 활성화하십시오. (/etc/login.defs, /etc/pam.d/common-password)",
+          "2단계: 설정 변경 후 시스템 재시작",
+          "3단계: 변경사항 검증"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0002"
+    }
+  },
+  {
+    "index": 2,
+    "original_item": {
+      "CCE_ID": "CCE-0003",
+      "점검항목": "계정 잠금 임계값 설정",
+      "결과": "양호",
+      "현황": "Account lockout is configured (deny: 3)",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Account lockout is configured (deny: 3)",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0003\n● 점검 항목: 계정 잠금 임계값 설정\n● 결과: 양호\n● 현황: Account lockout is configured (deny: 3)\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "계정 잠금 임계값 설정는 현재 적절하게 설정되어 있습니다. Account lockout is configured (deny: 3)",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "계정 잠금 임계값 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0003"
+    }
+  },
+  {
+    "index": 3,
+    "original_item": {
+      "CCE_ID": "CCE-0004",
+      "점검항목": "패스워드 최대 사용 기간 설정",
+      "결과": "취약",
+      "현황": "Password max age is set to 99999 days (should be <= 90)",
+      "개선방안": "패스워드 최대 사용 기간을 90일 이하로 설정하십시오. (/etc/login.defs)",
+      "detail": "Password max age is set to 99999 days (should be <= 90)",
+      "remediation": "패스워드 최대 사용 기간을 90일 이하로 설정하십시오. (/etc/login.defs)"
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0004\n● 점검 항목: 패스워드 최대 사용 기간 설정\n● 결과: 취약\n● 현황: Password max age is set to 99999 days (should be <= 90)\n● 개선방안: 패스워드 최대 사용 기간을 90일 이하로 설정하십시오. (/etc/login.defs)\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "패스워드 최대 사용 기간 설정에 보안 취약점이 발견되었습니다. Password max age is set to 99999 days (should be <= 90)",
+        "공격시나리오": "이 취약점을 이용하여 공격자가 패스워드 최대 사용 기간 설정을 악용할 수 있습니다.",
+        "비전문가설명": "패스워드 최대 사용 기간 설정가 제대로 설정되지 않아 보안 위험이 있습니다. 즉시 수정이 필요합니다.",
+        "조치방법": [
+          "1단계: 패스워드 최대 사용 기간을 90일 이하로 설정하십시오. (/etc/login.defs)",
+          "2단계: 설정 변경 후 시스템 재시작",
+          "3단계: 변경사항 검증"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0004"
+    }
+  },
+  {
+    "index": 4,
+    "original_item": {
+      "CCE_ID": "CCE-0005",
+      "점검항목": "패스워드 파일 보호",
+      "결과": "양호",
+      "현황": "Password files are properly protected",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Password files are properly protected",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0005\n● 점검 항목: 패스워드 파일 보호\n● 결과: 양호\n● 현황: Password files are properly protected\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "패스워드 파일 보호는 현재 적절하게 설정되어 있습니다. Password files are properly protected",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "패스워드 파일 보호는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0005"
+    }
+  },
+  {
+    "index": 5,
+    "original_item": {
+      "CCE_ID": "CCE-0006",
+      "점검항목": "root 홈 디렉터리 소유자 설정",
+      "결과": "양호",
+      "현황": "Root home directory is properly owned by root with 700 permissions",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Root home directory is properly owned by root with 700 permissions",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0006\n● 점검 항목: root 홈 디렉터리 소유자 설정\n● 결과: 양호\n● 현황: Root home directory is properly owned by root with 700 permissions\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "root 홈 디렉터리 소유자 설정는 현재 적절하게 설정되어 있습니다. Root home directory is properly owned by root with 700 permissions",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "root 홈 디렉터리 소유자 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0006"
+    }
+  },
+  {
+    "index": 6,
+    "original_item": {
+      "CCE_ID": "CCE-0007",
+      "점검항목": "파일 및 디렉터리 소유자 설정",
+      "결과": "양호",
+      "현황": "All critical files are properly owned by root",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "All critical files are properly owned by root",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0007\n● 점검 항목: 파일 및 디렉터리 소유자 설정\n● 결과: 양호\n● 현황: All critical files are properly owned by root\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "파일 및 디렉터리 소유자 설정는 현재 적절하게 설정되어 있습니다. All critical files are properly owned by root",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "파일 및 디렉터리 소유자 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0007"
+    }
+  },
+  {
+    "index": 7,
+    "original_item": {
+      "CCE_ID": "CCE-0008",
+      "점검항목": "/etc/passwd 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "현황": "/etc/passwd is properly configured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "/etc/passwd is properly configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0008\n● 점검 항목: /etc/passwd 파일 소유자 및 권한 설정\n● 결과: 양호\n● 현황: /etc/passwd is properly configured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "/etc/passwd 파일 소유자 및 권한 설정는 현재 적절하게 설정되어 있습니다. /etc/passwd is properly configured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "/etc/passwd 파일 소유자 및 권한 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0008"
+    }
+  },
+  {
+    "index": 8,
+    "original_item": {
+      "CCE_ID": "CCE-0009",
+      "점검항목": "/etc/shadow 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "현황": "/etc/shadow is properly configured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "/etc/shadow is properly configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0009\n● 점검 항목: /etc/shadow 파일 소유자 및 권한 설정\n● 결과: 양호\n● 현황: /etc/shadow is properly configured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "/etc/shadow 파일 소유자 및 권한 설정는 현재 적절하게 설정되어 있습니다. /etc/shadow is properly configured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "/etc/shadow 파일 소유자 및 권한 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0009"
+    }
+  },
+  {
+    "index": 9,
+    "original_item": {
+      "CCE_ID": "CCE-0010",
+      "점검항목": "/etc/hosts 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "현황": "/etc/hosts is properly configured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "/etc/hosts is properly configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0010\n● 점검 항목: /etc/hosts 파일 소유자 및 권한 설정\n● 결과: 양호\n● 현황: /etc/hosts is properly configured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "/etc/hosts 파일 소유자 및 권한 설정는 현재 적절하게 설정되어 있습니다. /etc/hosts is properly configured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "/etc/hosts 파일 소유자 및 권한 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0010"
+    }
+  },
+  {
+    "index": 10,
+    "original_item": {
+      "CCE_ID": "CCE-0011",
+      "점검항목": "/etc/(x)inetd.conf 파일 소유자 및 권한 설정",
+      "결과": "정보",
+      "현황": "inetd/xinetd config files are not found",
+      "개선방안": "추가 정보 확인이 필요합니다.",
+      "detail": "inetd/xinetd config files are not found",
+      "remediation": "추가 정보 확인이 필요합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0011\n● 점검 항목: /etc/(x)inetd.conf 파일 소유자 및 권한 설정\n● 결과: 정보\n● 현황: inetd/xinetd config files are not found\n● 개선방안: 추가 정보 확인이 필요합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "/etc/(x)inetd.conf 파일 소유자 및 권한 설정에 대한 추가 정보가 필요합니다. inetd/xinetd config files are not found",
+        "공격시나리오": "현재 정보만으로는 위험도를 정확히 판단하기 어렵습니다.",
+        "비전문가설명": "/etc/(x)inetd.conf 파일 소유자 및 권한 설정에 대해 더 자세한 정보가 필요합니다.",
+        "조치방법": [
+          "추가 정보 수집",
+          "전문가 검토"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0011"
+    }
+  },
+  {
+    "index": 11,
+    "original_item": {
+      "CCE_ID": "CCE-0012",
+      "점검항목": "/etc/syslog.conf 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "현황": "syslog config files are properly secured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "syslog config files are properly secured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0012\n● 점검 항목: /etc/syslog.conf 파일 소유자 및 권한 설정\n● 결과: 양호\n● 현황: syslog config files are properly secured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "/etc/syslog.conf 파일 소유자 및 권한 설정는 현재 적절하게 설정되어 있습니다. syslog config files are properly secured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "/etc/syslog.conf 파일 소유자 및 권한 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0012"
+    }
+  },
+  {
+    "index": 12,
+    "original_item": {
+      "CCE_ID": "CCE-0013",
+      "점검항목": "/etc/services 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "현황": "/etc/services is properly configured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "/etc/services is properly configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0013\n● 점검 항목: /etc/services 파일 소유자 및 권한 설정\n● 결과: 양호\n● 현황: /etc/services is properly configured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "/etc/services 파일 소유자 및 권한 설정는 현재 적절하게 설정되어 있습니다. /etc/services is properly configured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "/etc/services 파일 소유자 및 권한 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0013"
+    }
+  },
+  {
+    "index": 13,
+    "original_item": {
+      "CCE_ID": "CCE-0014",
+      "점검항목": "SUID, SGID, Sticky bit 설정 파일 점검",
+      "결과": "양호",
+      "현황": "SUID files: 45, SGID files: 12, Sticky dirs: 8",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "SUID files: 45, SGID files: 12, Sticky dirs: 8",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0014\n● 점검 항목: SUID, SGID, Sticky bit 설정 파일 점검\n● 결과: 양호\n● 현황: SUID files: 45, SGID files: 12, Sticky dirs: 8\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "SUID, SGID, Sticky bit 설정 파일 점검는 현재 적절하게 설정되어 있습니다. SUID files: 45, SGID files: 12, Sticky dirs: 8",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "SUID, SGID, Sticky bit 설정 파일 점검는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0014"
+    }
+  },
+  {
+    "index": 14,
+    "original_item": {
+      "CCE_ID": "CCE-0015",
+      "점검항목": "사용자, 시스템 시작파일 및 환경파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "현황": "All startup files are properly secured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "All startup files are properly secured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0015\n● 점검 항목: 사용자, 시스템 시작파일 및 환경파일 소유자 및 권한 설정\n● 결과: 양호\n● 현황: All startup files are properly secured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "사용자, 시스템 시작파일 및 환경파일 소유자 및 권한 설정는 현재 적절하게 설정되어 있습니다. All startup files are properly secured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "사용자, 시스템 시작파일 및 환경파일 소유자 및 권한 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0015"
+    }
+  },
+  {
+    "index": 15,
+    "original_item": {
+      "CCE_ID": "CCE-0016",
+      "점검항목": "world writable 파일 점검",
+      "결과": "양호",
+      "현황": "World writable files: 5",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "World writable files: 5",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0016\n● 점검 항목: world writable 파일 점검\n● 결과: 양호\n● 현황: World writable files: 5\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "world writable 파일 점검는 현재 적절하게 설정되어 있습니다. World writable files: 5",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "world writable 파일 점검는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0016"
+    }
+  },
+  {
+    "index": 16,
+    "original_item": {
+      "CCE_ID": "CCE-0017",
+      "점검항목": "$HOME/.rhosts, hosts.equiv 사용 금지",
+      "결과": "양호",
+      "현황": "No .rhosts files found, /etc/hosts.equiv not found",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "No .rhosts files found, /etc/hosts.equiv not found",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0017\n● 점검 항목: $HOME/.rhosts, hosts.equiv 사용 금지\n● 결과: 양호\n● 현황: No .rhosts files found, /etc/hosts.equiv not found\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "$HOME/.rhosts, hosts.equiv 사용 금지는 현재 적절하게 설정되어 있습니다. No .rhosts files found, /etc/hosts.equiv not found",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "$HOME/.rhosts, hosts.equiv 사용 금지는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0017"
+    }
+  },
+  {
+    "index": 17,
+    "original_item": {
+      "CCE_ID": "CCE-0018",
+      "점검항목": "접속 IP 및 포트 제한",
+      "결과": "취약",
+      "현황": "No SSH access restrictions configured",
+      "개선방안": "SSH 접속 제한을 설정하십시오. (/etc/ssh/sshd_config)",
+      "detail": "No SSH access restrictions configured",
+      "remediation": "SSH 접속 제한을 설정하십시오. (/etc/ssh/sshd_config)"
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0018\n● 점검 항목: 접속 IP 및 포트 제한\n● 결과: 취약\n● 현황: No SSH access restrictions configured\n● 개선방안: SSH 접속 제한을 설정하십시오. (/etc/ssh/sshd_config)\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "접속 IP 및 포트 제한에 보안 취약점이 발견되었습니다. No SSH access restrictions configured",
+        "공격시나리오": "이 취약점을 이용하여 공격자가 접속 IP 및 포트 제한을 악용할 수 있습니다.",
+        "비전문가설명": "접속 IP 및 포트 제한가 제대로 설정되지 않아 보안 위험이 있습니다. 즉시 수정이 필요합니다.",
+        "조치방법": [
+          "1단계: SSH 접속 제한을 설정하십시오. (/etc/ssh/sshd_config)",
+          "2단계: 설정 변경 후 시스템 재시작",
+          "3단계: 변경사항 검증"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0018"
+    }
+  },
+  {
+    "index": 18,
+    "original_item": {
+      "CCE_ID": "CCE-0019",
+      "점검항목": "cron파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "현황": "All cron directories are properly secured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "All cron directories are properly secured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0019\n● 점검 항목: cron파일 소유자 및 권한 설정\n● 결과: 양호\n● 현황: All cron directories are properly secured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "cron파일 소유자 및 권한 설정는 현재 적절하게 설정되어 있습니다. All cron directories are properly secured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "cron파일 소유자 및 권한 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0019"
+    }
+  },
+  {
+    "index": 19,
+    "original_item": {
+      "CCE_ID": "CCE-0020",
+      "점검항목": "Finger 서비스 비활성화",
+      "결과": "양호",
+      "현황": "Finger service is disabled or inactive",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Finger service is disabled or inactive",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0020\n● 점검 항목: Finger 서비스 비활성화\n● 결과: 양호\n● 현황: Finger service is disabled or inactive\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "Finger 서비스 비활성화는 현재 적절하게 설정되어 있습니다. Finger service is disabled or inactive",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "Finger 서비스 비활성화는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0020"
+    }
+  },
+  {
+    "index": 20,
+    "original_item": {
+      "CCE_ID": "CCE-0021",
+      "점검항목": "Anonymous FTP 서비스 비활성화",
+      "결과": "양호",
+      "현황": "Anonymous FTP is disabled or not configured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Anonymous FTP is disabled or not configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0021\n● 점검 항목: Anonymous FTP 서비스 비활성화\n● 결과: 양호\n● 현황: Anonymous FTP is disabled or not configured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "Anonymous FTP 서비스 비활성화는 현재 적절하게 설정되어 있습니다. Anonymous FTP is disabled or not configured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "Anonymous FTP 서비스 비활성화는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0021"
+    }
+  },
+  {
+    "index": 21,
+    "original_item": {
+      "CCE_ID": "CCE-0022",
+      "점검항목": "r계열 서비스 비활성화",
+      "결과": "양호",
+      "현황": "All r-series services are disabled",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "All r-series services are disabled",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0022\n● 점검 항목: r계열 서비스 비활성화\n● 결과: 양호\n● 현황: All r-series services are disabled\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "r계열 서비스 비활성화는 현재 적절하게 설정되어 있습니다. All r-series services are disabled",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "r계열 서비스 비활성화는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0022"
+    }
+  },
+  {
+    "index": 22,
+    "original_item": {
+      "CCE_ID": "CCE-0023",
+      "점검항목": "DoS 공격에 취약한 서비스 비활성화",
+      "결과": "양호",
+      "현황": "All DoS vulnerable services are disabled",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "All DoS vulnerable services are disabled",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0023\n● 점검 항목: DoS 공격에 취약한 서비스 비활성화\n● 결과: 양호\n● 현황: All DoS vulnerable services are disabled\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "DoS 공격에 취약한 서비스 비활성화는 현재 적절하게 설정되어 있습니다. All DoS vulnerable services are disabled",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "DoS 공격에 취약한 서비스 비활성화는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0023"
+    }
+  },
+  {
+    "index": 23,
+    "original_item": {
+      "CCE_ID": "CCE-0024",
+      "점검항목": "NFS 서비스 비활성화",
+      "결과": "양호",
+      "현황": "NFS service is disabled or inactive",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "NFS service is disabled or inactive",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0024\n● 점검 항목: NFS 서비스 비활성화\n● 결과: 양호\n● 현황: NFS service is disabled or inactive\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "NFS 서비스 비활성화는 현재 적절하게 설정되어 있습니다. NFS service is disabled or inactive",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "NFS 서비스 비활성화는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0024"
+    }
+  },
+  {
+    "index": 24,
+    "original_item": {
+      "CCE_ID": "CCE-0025",
+      "점검항목": "NFS 접근통제",
+      "결과": "양호",
+      "현황": "NFS exports file is empty or not found",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "NFS exports file is empty or not found",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0025\n● 점검 항목: NFS 접근통제\n● 결과: 양호\n● 현황: NFS exports file is empty or not found\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "NFS 접근통제는 현재 적절하게 설정되어 있습니다. NFS exports file is empty or not found",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "NFS 접근통제는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0025"
+    }
+  },
+  {
+    "index": 25,
+    "original_item": {
+      "CCE_ID": "CCE-0026",
+      "점검항목": "automountd 제거",
+      "결과": "양호",
+      "현황": "Automount service is disabled or inactive",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Automount service is disabled or inactive",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0026\n● 점검 항목: automountd 제거\n● 결과: 양호\n● 현황: Automount service is disabled or inactive\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "automountd 제거는 현재 적절하게 설정되어 있습니다. Automount service is disabled or inactive",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "automountd 제거는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0026"
+    }
+  },
+  {
+    "index": 26,
+    "original_item": {
+      "CCE_ID": "CCE-0027",
+      "점검항목": "RPC 서비스 확인",
+      "결과": "양호",
+      "현황": "RPC service is disabled or inactive",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "RPC service is disabled or inactive",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0027\n● 점검 항목: RPC 서비스 확인\n● 결과: 양호\n● 현황: RPC service is disabled or inactive\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "RPC 서비스 확인는 현재 적절하게 설정되어 있습니다. RPC service is disabled or inactive",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "RPC 서비스 확인는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0027"
+    }
+  },
+  {
+    "index": 27,
+    "original_item": {
+      "CCE_ID": "CCE-0028",
+      "점검항목": "NIS, NIS+ 점검",
+      "결과": "양호",
+      "현황": "All NIS/NIS+ services are disabled",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "All NIS/NIS+ services are disabled",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0028\n● 점검 항목: NIS, NIS+ 점검\n● 결과: 양호\n● 현황: All NIS/NIS+ services are disabled\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "NIS, NIS+ 점검는 현재 적절하게 설정되어 있습니다. All NIS/NIS+ services are disabled",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "NIS, NIS+ 점검는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0028"
+    }
+  },
+  {
+    "index": 28,
+    "original_item": {
+      "CCE_ID": "CCE-0029",
+      "점검항목": "tftp, talk 서비스 비활성화",
+      "결과": "양호",
+      "현황": "All tftp/talk services are disabled",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "All tftp/talk services are disabled",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0029\n● 점검 항목: tftp, talk 서비스 비활성화\n● 결과: 양호\n● 현황: All tftp/talk services are disabled\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "tftp, talk 서비스 비활성화는 현재 적절하게 설정되어 있습니다. All tftp/talk services are disabled",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "tftp, talk 서비스 비활성화는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0029"
+    }
+  },
+  {
+    "index": 29,
+    "original_item": {
+      "CCE_ID": "CCE-0030",
+      "점검항목": "Sendmail 버전 점검",
+      "결과": "정보",
+      "현황": "Sendmail is not installed or not running",
+      "개선방안": "추가 정보 확인이 필요합니다.",
+      "detail": "Sendmail is not installed or not running",
+      "remediation": "추가 정보 확인이 필요합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0030\n● 점검 항목: Sendmail 버전 점검\n● 결과: 정보\n● 현황: Sendmail is not installed or not running\n● 개선방안: 추가 정보 확인이 필요합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "Sendmail 버전 점검에 대한 추가 정보가 필요합니다. Sendmail is not installed or not running",
+        "공격시나리오": "현재 정보만으로는 위험도를 정확히 판단하기 어렵습니다.",
+        "비전문가설명": "Sendmail 버전 점검에 대해 더 자세한 정보가 필요합니다.",
+        "조치방법": [
+          "추가 정보 수집",
+          "전문가 검토"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0030"
+    }
+  },
+  {
+    "index": 30,
+    "original_item": {
+      "CCE_ID": "CCE-0031",
+      "점검항목": "스팸 메일 릴레이 제한",
+      "결과": "양호",
+      "현황": "Sendmail is not configured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Sendmail is not configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0031\n● 점검 항목: 스팸 메일 릴레이 제한\n● 결과: 양호\n● 현황: Sendmail is not configured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "스팸 메일 릴레이 제한는 현재 적절하게 설정되어 있습니다. Sendmail is not configured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "스팸 메일 릴레이 제한는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0031"
+    }
+  },
+  {
+    "index": 31,
+    "original_item": {
+      "CCE_ID": "CCE-0032",
+      "점검항목": "일반 사용자의 Sendmail 실행 방지",
+      "결과": "양호",
+      "현황": "Sendmail binary permissions are properly set",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Sendmail binary permissions are properly set",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0032\n● 점검 항목: 일반 사용자의 Sendmail 실행 방지\n● 결과: 양호\n● 현황: Sendmail binary permissions are properly set\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "일반 사용자의 Sendmail 실행 방지는 현재 적절하게 설정되어 있습니다. Sendmail binary permissions are properly set",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "일반 사용자의 Sendmail 실행 방지는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0032"
+    }
+  },
+  {
+    "index": 32,
+    "original_item": {
+      "CCE_ID": "CCE-0033",
+      "점검항목": "DNS 보안 버전 패치",
+      "결과": "양호",
+      "현황": "DNS service is not running",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "DNS service is not running",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0033\n● 점검 항목: DNS 보안 버전 패치\n● 결과: 양호\n● 현황: DNS service is not running\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "DNS 보안 버전 패치는 현재 적절하게 설정되어 있습니다. DNS service is not running",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "DNS 보안 버전 패치는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0033"
+    }
+  },
+  {
+    "index": 33,
+    "original_item": {
+      "CCE_ID": "CCE-0034",
+      "점검항목": "DNS Zone Transfer 설정",
+      "결과": "양호",
+      "현황": "DNS is not configured",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "DNS is not configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0034\n● 점검 항목: DNS Zone Transfer 설정\n● 결과: 양호\n● 현황: DNS is not configured\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "DNS Zone Transfer 설정는 현재 적절하게 설정되어 있습니다. DNS is not configured",
+        "공격시나리오": "현재 설정으로는 직접적인 공격 위험이 낮습니다.",
+        "비전문가설명": "DNS Zone Transfer 설정는 시스템 보안을 위한 중요한 설정입니다. 현재 올바르게 설정되어 있어 안전합니다.",
+        "조치방법": [
+          "현재 설정 유지",
+          "정기적인 모니터링 수행"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0034"
+    }
+  },
+  {
+    "index": 34,
+    "original_item": {
+      "CCE_ID": "CCE-0035",
+      "점검항목": "최신 보안 패치 및 벤더 권고 사항 적용",
+      "결과": "취약",
+      "현황": "Security updates are available for ubuntu",
+      "개선방안": "시스템 보안 업데이트를 적용하십시오. (apt update && apt upgrade)",
+      "detail": "Security updates are available for ubuntu",
+      "remediation": "시스템 보안 업데이트를 적용하십시오. (apt update && apt upgrade)"
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0035\n● 점검 항목: 최신 보안 패치 및 벤더 권고 사항 적용\n● 결과: 취약\n● 현황: Security updates are available for ubuntu\n● 개선방안: 시스템 보안 업데이트를 적용하십시오. (apt update && apt upgrade)\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "최신 보안 패치 및 벤더 권고 사항 적용에 보안 취약점이 발견되었습니다. Security updates are available for ubuntu",
+        "공격시나리오": "이 취약점을 이용하여 공격자가 최신 보안 패치 및 벤더 권고 사항 적용을 악용할 수 있습니다.",
+        "비전문가설명": "최신 보안 패치 및 벤더 권고 사항 적용가 제대로 설정되지 않아 보안 위험이 있습니다. 즉시 수정이 필요합니다.",
+        "조치방법": [
+          "1단계: 시스템 보안 업데이트를 적용하십시오. (apt update && apt upgrade)",
+          "2단계: 설정 변경 후 시스템 재시작",
+          "3단계: 변경사항 검증"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0035"
+    }
+  },
+  {
+    "index": 35,
+    "original_item": {
+      "CCE_ID": "CCE-0036",
+      "점검항목": "로그의 정기적 검토 및 백업",
+      "결과": "취약",
+      "현황": "Log management is not properly configured",
+      "개선방안": "로그 관리 정책을 설정하고 정기적인 로그 백업을 구성하십시오.",
+      "detail": "Log management is not properly configured",
+      "remediation": "로그 관리 정책을 설정하고 정기적인 로그 백업을 구성하십시오."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0036\n● 점검 항목: 로그의 정기적 검토 및 백업\n● 결과: 취약\n● 현황: Log management is not properly configured\n● 개선방안: 로그 관리 정책을 설정하고 정기적인 로그 백업을 구성하십시오.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": true,
+      "data": {
+        "상세해설": "로그의 정기적 검토 및 백업에 보안 취약점이 발견되었습니다. Log management is not properly configured",
+        "공격시나리오": "이 취약점을 이용하여 공격자가 로그의 정기적 검토 및 백업을 악용할 수 있습니다.",
+        "비전문가설명": "로그의 정기적 검토 및 백업가 제대로 설정되지 않아 보안 위험이 있습니다. 즉시 수정이 필요합니다.",
+        "조치방법": [
+          "1단계: 로그 관리 정책을 설정하고 정기적인 로그 백업을 구성하십시오.",
+          "2단계: 설정 변경 후 시스템 재시작",
+          "3단계: 변경사항 검증"
+        ]
+      },
+      "raw_response": "모의 응답: CCE-0036"
+    }
+  }
+]

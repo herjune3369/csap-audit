@@ -1,0 +1,59 @@
+[
+  {
+    "index": 0,
+    "original_item": {
+      "CCE_ID": "CCE-0001",
+      "점검항목": "root 계정 원격 접속 제한",
+      "결과": "양호",
+      "현황": "PermitRootLogin is set to no",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "PermitRootLogin is set to no",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0001\n● 점검 항목: root 계정 원격 접속 제한\n● 결과: 양호\n● 현황: PermitRootLogin is set to no\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": false,
+      "error": "Timeout of 60.0s exceeded, last exception: 503 DNS resolution failed for generativelanguage.googleapis.com:443: C-ares status is not ARES_SUCCESS qtype=A name=generativelanguage.googleapis.com is_balancer=0: DNS query cancelled",
+      "raw_response": ""
+    }
+  },
+  {
+    "index": 1,
+    "original_item": {
+      "CCE_ID": "CCE-0002",
+      "점검항목": "패스워드 복잡도 설정",
+      "결과": "취약",
+      "현황": "Password complexity is not properly configured (minlen: 6)",
+      "개선방안": "패스워드 최소 길이를 8자 이상으로 설정하고 pam_pwquality 모듈을 활성화하십시오. (/etc/login.defs, /etc/pam.d/common-password)",
+      "detail": "Password complexity is not properly configured (minlen: 6)",
+      "remediation": "패스워드 최소 길이를 8자 이상으로 설정하고 pam_pwquality 모듈을 활성화하십시오. (/etc/login.defs, /etc/pam.d/common-password)"
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0002\n● 점검 항목: 패스워드 복잡도 설정\n● 결과: 취약\n● 현황: Password complexity is not properly configured (minlen: 6)\n● 개선방안: 패스워드 최소 길이를 8자 이상으로 설정하고 pam_pwquality 모듈을 활성화하십시오. (/etc/login.defs, /etc/pam.d/common-password)\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": false,
+      "error": "Timeout of 60.0s exceeded, last exception: 503 DNS resolution failed for generativelanguage.googleapis.com:443: C-ares status is not ARES_SUCCESS qtype=SRV name=_grpclb._tcp.generativelanguage.googleapis.com: DNS query cancelled",
+      "raw_response": ""
+    }
+  },
+  {
+    "index": 2,
+    "original_item": {
+      "CCE_ID": "CCE-0003",
+      "점검항목": "계정 잠금 임계값 설정",
+      "결과": "양호",
+      "현황": "Account lockout is configured (deny: 3)",
+      "개선방안": "현재 설정이 적절합니다.",
+      "detail": "Account lockout is configured (deny: 3)",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    "prompt": "\n다음은 Linux 시스템 보안 점검 결과입니다.\n\n● CCE ID: CCE-0003\n● 점검 항목: 계정 잠금 임계값 설정\n● 결과: 양호\n● 현황: Account lockout is configured (deny: 3)\n● 개선방안: 현재 설정이 적절합니다.\n\n질문:\n1. 이 취약점이 발생하면 어떤 보안 위협과 공격 시나리오가 있습니까?\n2. 이 항목의 목적과 보안 중요성을 비전문가가 이해할 수 있도록 설명해 주세요.\n3. 실제 Linux 시스템 기준으로 조치하는 방법을 알려주세요. (설정 파일/명령어/도구 포함)\n\n다음 JSON 형식으로 답변해주세요:\n{\n    \"상세해설\": \"취약점에 대한 상세한 기술적 설명\",\n    \"공격시나리오\": \"이 취약점을 이용한 구체적인 공격 시나리오\",\n    \"비전문가설명\": \"비전문가도 이해할 수 있는 쉬운 설명\",\n    \"조치방법\": [\"1단계: ...\", \"2단계: ...\", \"3단계: ...\"]\n}\n",
+    "system_type": "Linux",
+    "llm_response": {
+      "success": false,
+      "error": "Timeout of 60.0s exceeded, last exception: 503 DNS resolution failed for generativelanguage.googleapis.com:443: C-ares status is not ARES_SUCCESS qtype=SRV name=_grpclb._tcp.generativelanguage.googleapis.com: DNS query cancelled",
+      "raw_response": ""
+    }
+  }
+]

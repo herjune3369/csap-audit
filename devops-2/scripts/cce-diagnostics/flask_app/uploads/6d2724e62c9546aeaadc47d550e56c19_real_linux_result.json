@@ -1,0 +1,270 @@
+{
+  "metadata": {
+    "timestamp": "2025-07-30T12:56:05Z",
+    "hostname": "ip-10-0-1-247",
+    "os_info": "Ubuntu 22.04.5 LTS",
+    "os_type": "linux",
+    "total_checks": 36,
+    "version": "1.0",
+    "statistics": {
+      "total": "36",
+      "good": "0",
+      "vulnerable": "0",
+      "info": "0"
+    }
+  },
+  "results": [
+    {
+      "CCE_ID": "CCE-0001",
+      "항목": "root 계정 원격 접속 제한",
+      "결과": "취약",
+      "detail": "PermitRootLogin is set to  (should be no)",
+      "remediation": "SSH 설정에서 PermitRootLogin을 no로 설정하십시오. (/etc/ssh/sshd_config)"
+    },
+    {
+      "CCE_ID": "CCE-0002",
+      "항목": "패스워드 복잡도 설정",
+      "결과": "취약",
+      "detail": "Password complexity is not properly configured (minlen: )",
+      "remediation": "패스워드 최소 길이를 8자 이상으로 설정하고 pam_pwquality 모듈을 활성화하십시오. (/etc/login.defs, /etc/pam.d/common-password)"
+    },
+    {
+      "CCE_ID": "CCE-0003",
+      "항목": "계정 잠금 임계값 설정",
+      "결과": "취약",
+      "detail": "Account lockout is not properly configured",
+      "remediation": "계정 잠금 임계값을 5회 이하로 설정하십시오. (/etc/security/faillock.conf)"
+    },
+    {
+      "CCE_ID": "CCE-0004",
+      "항목": "패스워드 최대 사용 기간 설정",
+      "결과": "취약",
+      "detail": "Password max age is set to 99999 days (should be <= 90)",
+      "remediation": "패스워드 최대 사용 기간을 90일 이하로 설정하십시오. (/etc/login.defs)"
+    },
+    {
+      "CCE_ID": "CCE-0005",
+      "항목": "패스워드 파일 보호",
+      "결과": "양호",
+      "detail": "Password files are properly protected",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0006",
+      "항목": "root 홈 디렉터리 소유자 설정",
+      "결과": "양호",
+      "detail": "Root home directory is properly owned by root with 700 permissions",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0007",
+      "항목": "파일 및 디렉터리 소유자 설정",
+      "결과": "양호",
+      "detail": "All critical files are properly owned by root",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0008",
+      "항목": "/etc/passwd 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "detail": "/etc/passwd is properly configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0009",
+      "항목": "/etc/shadow 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "detail": "/etc/shadow is properly configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0010",
+      "항목": "/etc/hosts 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "detail": "/etc/hosts is properly configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0011",
+      "항목": "/etc/(x)inetd.conf 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "detail": "inetd/xinetd config files are properly secured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0012",
+      "항목": "/etc/syslog.conf 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "detail": "syslog config files are properly secured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0013",
+      "항목": "/etc/services 파일 소유자 및 권한 설정",
+      "결과": "양호",
+      "detail": "/etc/services is properly configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0014",
+      "항목": "SUID, SGID, Sticky bit 설정 파일 점검",
+      "결과": "양호",
+      "detail": "SUID files: 39, SGID files: 17, Sticky dirs: 29",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0015",
+      "항목": "사용자, 시스템 시작파일 및 환경파일 소유자 및 권한 설정",
+      "결과": "취약",
+      "detail": "Some startup files are not properly secured",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0016",
+      "항목": "world writable 파일 점검",
+      "결과": "취약",
+      "detail": "Too many world writable files found: 2198",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0017",
+      "항목": "/root/.rhosts, hosts.equiv 사용 금지",
+      "결과": "양호",
+      "detail": "No .rhosts files found, /etc/hosts.equiv not found",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0018",
+      "항목": "접속 IP 및 포트 제한",
+      "결과": "취약",
+      "detail": "No SSH access restrictions configured",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0019",
+      "항목": "cron파일 소유자 및 권한 설정",
+      "결과": "취약",
+      "detail": "Some cron directories are not properly secured",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0020",
+      "항목": "Finger 서비스 비활성화",
+      "결과": "취약",
+      "detail": "Finger service is enabled and active",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0021",
+      "항목": "Anonymous FTP 서비스 비활성화",
+      "결과": "양호",
+      "detail": "Anonymous FTP is disabled or not configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0022",
+      "항목": "r계열 서비스 비활성화",
+      "결과": "양호",
+      "detail": "All r-series services are disabled",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0023",
+      "항목": "DoS 공격에 취약한 서비스 비활성화",
+      "결과": "양호",
+      "detail": "All DoS vulnerable services are disabled",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0024",
+      "항목": "NFS 서비스 비활성화",
+      "결과": "취약",
+      "detail": "NFS service is enabled and active",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0025",
+      "항목": "NFS 접근통제",
+      "결과": "양호",
+      "detail": "NFS exports file is empty or not found",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0026",
+      "항목": "automountd 제거",
+      "결과": "취약",
+      "detail": "Automount service is enabled and active",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0027",
+      "항목": "RPC 서비스 확인",
+      "결과": "취약",
+      "detail": "RPC service is enabled and active",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0028",
+      "항목": "NIS, NIS+ 점검",
+      "결과": "양호",
+      "detail": "All NIS/NIS+ services are disabled",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0029",
+      "항목": "tftp, talk 서비스 비활성화",
+      "결과": "양호",
+      "detail": "All tftp/talk services are disabled",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0030",
+      "항목": "Sendmail 버전 점검",
+      "결과": "양호",
+      "detail": "Sendmail is not installed or not running",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0031",
+      "항목": "스팸 메일 릴레이 제한",
+      "결과": "양호",
+      "detail": "Sendmail is not configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0032",
+      "항목": "일반 사용자의 Sendmail 실행 방지",
+      "결과": "양호",
+      "detail": "Sendmail is not installed",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0033",
+      "항목": "DNS 보안 버전 패치",
+      "결과": "양호",
+      "detail": "DNS service is not running",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0034",
+      "항목": "DNS Zone Transfer 설정",
+      "결과": "양호",
+      "detail": "DNS is not configured",
+      "remediation": "현재 설정이 적절합니다."
+    },
+    {
+      "CCE_ID": "CCE-0035",
+      "항목": "최신 보안 패치 및 벤더 권고 사항 적용",
+      "결과": "취약",
+      "detail": "Security updates are available for ubuntu",
+      "remediation": "보안 강화 조치가 필요합니다."
+    },
+    {
+      "CCE_ID": "CCE-0036",
+      "항목": "로그의 정기적 검토 및 백업",
+      "결과": "정보",
+      "detail": "Log rotation is configured but backup needs verification",
+      "remediation": "추가 정보 확인이 필요합니다."
+    }
+  ]
+}
