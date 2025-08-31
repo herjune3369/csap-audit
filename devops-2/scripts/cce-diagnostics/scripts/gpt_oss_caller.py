@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 class GPTOSSCaller:
     """GPT-OSS-20B 모델을 사용한 LLM 호출기"""
     
-    def __init__(self, model_name: str = "gpt4all:gpt4all-j-1.3-groovy"):
+    def __init__(self, model_name: str = "llama2:7b"):
         self.model_name = model_name
         self.base_url = "http://localhost:11434"  # Ollama 기본 포트
         
