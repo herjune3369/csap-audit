@@ -219,3 +219,4 @@ rm -rf ~/.ansible
 
 문제가 발생하거나 질문이 있으시면 이슈를 생성해 주세요. # test
 # Trigger workflow
+# Test workflow execution
