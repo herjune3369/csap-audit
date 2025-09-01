@@ -275,31 +275,6 @@ jobs:
     needs: [deploy-dev, deploy-staging, deploy-prod]
     if: always()
     steps:
-      - name: Check Slack Webhook
-        id: check-slack
-        run: |
-          if [ -n "${{ secrets.SLACK_WEBHOOK_URL }}" ]; then
-            echo "slack_available=true" >> $GITHUB_OUTPUT
-          else
-            echo "slack_available=false" >> $GITHUB_OUTPUT
-          fi
-      
-      - name: Notify Slack
-        uses: 8398a7/action-slack@v3
-        if: steps.check-slack.outputs.slack_available == 'true'
-        with:
-          status: ${{ job.status }}
-          channel: '#devops'
-          text: |
-            :rocket: DevOps-2 GPT-OSS-20B System Deployment
-            Environment: ${{ github.event.inputs.environment || 'dev' }}
-            Action: ${{ github.event.inputs.action || 'deploy' }}
-            Status: ${{ job.status }}
-            Branch: ${{ github.ref }}
-            Commit: ${{ github.sha }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      
       - name: Console Notification
         if: always()
         run: |
@@ -309,4 +284,11 @@ jobs:
           echo "Status: ${{ job.status }}"
           echo "Branch: ${{ github.ref }}"
           echo "Commit: ${{ github.sha }}"
-          echo "✅ Deployment notification completed" 
+          echo "✅ Deployment notification completed"
+          echo ""
+          echo "📊 Deployment Summary:"
+          echo "- Infrastructure: Terraform managed"
+          echo "- Application: Flask with GPT-OSS-20B"
+          echo "- Database: RDS MySQL"
+          echo "- Load Balancer: ALB with health checks"
+          echo "- Monitoring: CloudWatch enabled" 
