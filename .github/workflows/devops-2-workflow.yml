@@ -275,9 +275,18 @@ jobs:
     needs: [deploy-dev, deploy-staging, deploy-prod]
     if: always()
     steps:
+      - name: Check Slack Webhook
+        id: check-slack
+        run: |
+          if [ -n "${{ secrets.SLACK_WEBHOOK_URL }}" ]; then
+            echo "slack_available=true" >> $GITHUB_OUTPUT
+          else
+            echo "slack_available=false" >> $GITHUB_OUTPUT
+          fi
+      
       - name: Notify Slack
         uses: 8398a7/action-slack@v3
-        if: always() && secrets.SLACK_WEBHOOK_URL != ''
+        if: steps.check-slack.outputs.slack_available == 'true'
         with:
           status: ${{ job.status }}
           channel: '#devops'
