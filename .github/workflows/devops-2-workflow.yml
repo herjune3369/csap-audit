@@ -126,7 +126,7 @@ jobs:
           tar -czf devops-2-gpt-oss.tar.gz scripts/ terraform/ ansible/
 
       - name: Upload deployment package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: devops-2-deployment-package
           path: devops-2/devops-2-gpt-oss.tar.gz
@@ -142,7 +142,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download deployment package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: devops-2-deployment-package
 
@@ -192,7 +192,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download deployment package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: devops-2-deployment-package
 
@@ -236,7 +236,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download deployment package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: devops-2-deployment-package
 
