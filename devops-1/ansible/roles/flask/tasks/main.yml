@@ -22,14 +22,10 @@
     creates: /home/ubuntu/myapp/venv
   become: true
 
-- name: Create requirements.txt
+- name: Copy requirements.txt
   copy:
+    src: requirements.txt
     dest: /home/ubuntu/myapp/requirements.txt
-    content: |
-      flask<3
-      requests
-      pymysql
-      python-dotenv
     owner: ubuntu
     group: ubuntu
     mode: '0644'
@@ -97,8 +93,20 @@
 
 - name: Start Flask app with nohup
   shell: |
-    source /home/ubuntu/myapp/venv/bin/activate
-    nohup python /home/ubuntu/myapp/app.py > /home/ubuntu/myapp/flask.log 2>&1 &
+    cd /home/ubuntu/myapp
+    source venv/bin/activate
+    nohup python app.py > flask.log 2>&1 &
+    sleep 2
+    ps aux | grep app.py | grep -v grep || (echo "Flask app failed to start" && cat flask.log && exit 1)
   args:
     executable: /bin/bash
   become: true
+  register: flask_start
+  
+- name: Check Flask app logs
+  shell: |
+    tail -50 /home/ubuntu/myapp/flask.log
+  args:
+    executable: /bin/bash
+  become: true
+  when: flask_start.rc != 0
