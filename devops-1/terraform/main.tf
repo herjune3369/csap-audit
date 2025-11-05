@@ -10,7 +10,7 @@ data "aws_vpc" "existing_vpc" {
 # 서브넷 생성
 resource "aws_subnet" "public_subnet_a" {
   vpc_id                  = data.aws_vpc.existing_vpc.id
-  cidr_block              = "10.0.1.0/24"
+  cidr_block              = "172.31.1.0/24"
   availability_zone       = "ap-northeast-2a"
   map_public_ip_on_launch = true
 
@@ -21,7 +21,7 @@ resource "aws_subnet" "public_subnet_a" {
 
 resource "aws_subnet" "public_subnet_b" {
   vpc_id                  = data.aws_vpc.existing_vpc.id
-  cidr_block              = "10.0.2.0/24"
+  cidr_block              = "172.31.2.0/24"
   availability_zone       = "ap-northeast-2b"
   map_public_ip_on_launch = true
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "public_subnet_b" {
 
 resource "aws_subnet" "private_subnet_c" {
   vpc_id            = data.aws_vpc.existing_vpc.id
-  cidr_block        = "10.0.3.0/24"
+  cidr_block        = "172.31.3.0/24"
   availability_zone = "ap-northeast-2c"
 
   tags = {
@@ -42,7 +42,7 @@ resource "aws_subnet" "private_subnet_c" {
 
 resource "aws_subnet" "private_subnet_b" {
   vpc_id            = data.aws_vpc.existing_vpc.id
-  cidr_block        = "10.0.4.0/24"
+  cidr_block        = "172.31.4.0/24"
   availability_zone = "ap-northeast-2b"
 
   tags = {
@@ -69,6 +69,8 @@ resource "aws_nat_gateway" "nat_gw" {
 resource "aws_internet_gateway" "igw" {
   vpc_id = data.aws_vpc.existing_vpc.id
 }
+
+
 
 # Route Tables
 resource "aws_route_table" "public_rt" {
