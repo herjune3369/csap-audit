@@ -2,7 +2,7 @@ name: DevOps Infrastructure Automation
 
 on:
   push:
-    branches: [ main, develop, devops-1 ]
+    branches: [ main, develop, devops-1, devops-1-security-app ]
     paths:
       - 'devops-1/**'
       - '.github/workflows/devops-1-workflow.yml'
