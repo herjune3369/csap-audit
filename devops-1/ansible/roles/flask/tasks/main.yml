@@ -75,6 +75,22 @@
     group: ubuntu
     mode: '0755'
 
+- name: Copy scripts directory
+  copy:
+    src: scripts/
+    dest: /home/ubuntu/myapp/scripts/
+    owner: ubuntu
+    group: ubuntu
+    mode: '0755'
+
+- name: Copy templates directory
+  copy:
+    src: templates/
+    dest: /home/ubuntu/myapp/templates/
+    owner: ubuntu
+    group: ubuntu
+    mode: '0755'
+
 - name: Kill existing Flask app if running
   shell: "pkill -f app.py"
   ignore_errors: true
