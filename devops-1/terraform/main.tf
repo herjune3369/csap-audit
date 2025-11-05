@@ -141,17 +141,17 @@ resource "aws_route_table_association" "private_rt_assoc_b" {
 
 # RDS 설정
 resource "aws_db_subnet_group" "rds_subnet_group" {
-  name       = "rds-subnet-group"
+  name       = "devops-1-rds-subnet-group"
   subnet_ids = [aws_subnet.private_subnet_c.id, aws_subnet.private_subnet_b.id]
 
   tags = {
-    Name = "rds-subnet-group"
+    Name = "devops-1-rds-subnet-group"
   }
 }
 
 # Security Groups
 resource "aws_security_group" "web_sg" {
-  name        = "web-sg"
+  name        = "devops-1-web-sg"
   description = "Allow SSH, HTTP, and Flask app port"
   vpc_id      = local.vpc_id
 
@@ -185,7 +185,7 @@ resource "aws_security_group" "web_sg" {
 }
 
 resource "aws_security_group" "alb_sg" {
-  name        = "alb-sg"
+  name        = "devops-1-alb-sg"
   description = "Allow HTTP to ALB"
   vpc_id      = local.vpc_id
 
@@ -204,12 +204,12 @@ resource "aws_security_group" "alb_sg" {
   }
 
   tags = {
-    Name = "alb-sg"
+    Name = "devops-1-alb-sg"
   }
 }
 
 resource "aws_security_group" "rds_sg" {
-  name        = "rds-sg"
+  name        = "devops-1-rds-sg"
   description = "Allow MySQL from EC2"
   vpc_id      = local.vpc_id
 
@@ -228,13 +228,13 @@ resource "aws_security_group" "rds_sg" {
   }
 
   tags = {
-    Name = "rds-sg"
+    Name = "devops-1-rds-sg"
   }
 }
 
 # RDS 설정
 resource "aws_db_instance" "flask_db" {
-  identifier              = "flask-db"
+  identifier              = "devops-1-flask-db"
   engine                  = "mysql"
   engine_version          = "8.0"
   instance_class          = "db.t3.micro"
@@ -251,7 +251,7 @@ resource "aws_db_instance" "flask_db" {
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
 
   tags = {
-    Name = "flask-db"
+    Name = "devops-1-flask-db"
   }
 }
 
@@ -291,19 +291,19 @@ resource "aws_instance" "web2" {
 
 # Load Balancer 설정
 resource "aws_lb" "app_lb" {
-  name               = "app-lb"
+  name               = "devops-1-app-lb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
   subnets            = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
 
   tags = {
-    Name = "app-lb"
+    Name = "devops-1-app-lb"
   }
 }
 
 resource "aws_lb_target_group" "app_tg" {
-  name     = "app-tg"
+  name     = "devops-1-app-tg"
   port     = 5000
   protocol = "HTTP"
   vpc_id   = local.vpc_id
@@ -319,7 +319,7 @@ resource "aws_lb_target_group" "app_tg" {
   }
 
   tags = {
-    Name = "app-target-group"
+    Name = "devops-1-app-target-group"
   }
 }
 
