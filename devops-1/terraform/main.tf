@@ -214,10 +214,11 @@ resource "aws_security_group" "rds_sg" {
   vpc_id      = local.vpc_id
 
   ingress {
-    from_port       = 3306
-    to_port         = 3306
-    protocol        = "tcp"
-    security_groups = [aws_security_group.web_sg.id]
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [aws_subnet.public_subnet_a.cidr_block, aws_subnet.public_subnet_b.cidr_block]
+    description = "Allow MySQL from public subnets"
   }
 
   egress {
