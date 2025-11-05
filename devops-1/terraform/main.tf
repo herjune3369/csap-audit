@@ -21,11 +21,9 @@ data "aws_vpc" "existing_vpc" {
   id    = var.vpc_id
 }
 
-# VPC ID 및 Internet Gateway ID 결정
+# VPC ID 결정
 locals {
   vpc_id = var.vpc_id != "" ? var.vpc_id : aws_vpc.main_vpc[0].id
-  # Internet Gateway ID: 기존 VPC 사용 시 기존 IGW 사용, 새 VPC 생성 시 새 IGW 사용
-  igw_id = var.vpc_id != "" && length(data.aws_internet_gateways.existing_igws) > 0 && length(data.aws_internet_gateways.existing_igws[0].ids) > 0 ? data.aws_internet_gateways.existing_igws[0].ids[0] : aws_internet_gateway.igw[0].id
 }
 
 # 서브넷 생성
@@ -86,18 +84,10 @@ resource "aws_nat_gateway" "nat_gw" {
   }
 }
 
-# 기존 Internet Gateway 찾기 (기존 VPC 사용 시)
-data "aws_internet_gateways" "existing_igws" {
-  count = var.vpc_id != "" ? 1 : 0
-  filter {
-    name   = "attachment.vpc-id"
-    values = [local.vpc_id]
-  }
-}
-
-# Internet Gateway 생성 (새 VPC 생성 시 또는 기존 VPC에 IGW가 없을 때)
+# Internet Gateway 생성
+# 새 VPC 생성 시에는 항상 생성, 기존 VPC 사용 시에도 생성 시도
+# (기존 VPC에 이미 IGW가 있으면 오류 발생 가능 - 이 경우 수동으로 처리 필요)
 resource "aws_internet_gateway" "igw" {
-  count  = var.vpc_id == "" || length(data.aws_internet_gateways.existing_igws) == 0 ? 1 : 0
   vpc_id = local.vpc_id
 
   tags = {
@@ -112,7 +102,7 @@ resource "aws_route_table" "public_rt" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = local.igw_id
+    gateway_id = aws_internet_gateway.igw.id
   }
 }
 
