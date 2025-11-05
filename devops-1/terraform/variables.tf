@@ -10,8 +10,9 @@ variable "instance_type" {
 }
 
 variable "vpc_id" {
-  description = "VPC ID where the resources will be deployed"
+  description = "VPC ID where the resources will be deployed (leave empty to create new VPC)"
   type        = string
+  default     = ""
 }
 
 variable "subnet_ids" {

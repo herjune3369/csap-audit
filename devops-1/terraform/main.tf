@@ -2,14 +2,35 @@ provider "aws" {
   region = "ap-northeast-2"
 }
 
-# 기존 VPC 사용
+# VPC 생성 (기존 VPC가 없을 경우)
+resource "aws_vpc" "main_vpc" {
+  count = var.vpc_id == "" ? 1 : 0
+
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  tags = {
+    Name = "devops-1-vpc"
+  }
+}
+
+# 기존 VPC 사용 (VPC ID가 제공된 경우)
 data "aws_vpc" "existing_vpc" {
-  id = var.vpc_id
+  count = var.vpc_id != "" ? 1 : 0
+  id    = var.vpc_id
+}
+
+# VPC ID 및 Internet Gateway ID 결정
+locals {
+  vpc_id = var.vpc_id != "" ? var.vpc_id : aws_vpc.main_vpc[0].id
+  # Internet Gateway ID: 기존 VPC 사용 시 기존 IGW 사용, 새 VPC 생성 시 새 IGW 사용
+  igw_id = var.vpc_id != "" && length(data.aws_internet_gateways.existing_igws) > 0 && length(data.aws_internet_gateways.existing_igws[0].ids) > 0 ? data.aws_internet_gateways.existing_igws[0].ids[0] : aws_internet_gateway.igw[0].id
 }
 
 # 서브넷 생성
 resource "aws_subnet" "public_subnet_a" {
-  vpc_id                  = data.aws_vpc.existing_vpc.id
+  vpc_id                  = local.vpc_id
   cidr_block              = "10.0.1.0/24"
   availability_zone       = "ap-northeast-2a"
   map_public_ip_on_launch = true
@@ -20,7 +41,7 @@ resource "aws_subnet" "public_subnet_a" {
 }
 
 resource "aws_subnet" "public_subnet_b" {
-  vpc_id                  = data.aws_vpc.existing_vpc.id
+  vpc_id                  = local.vpc_id
   cidr_block              = "10.0.2.0/24"
   availability_zone       = "ap-northeast-2b"
   map_public_ip_on_launch = true
@@ -31,7 +52,7 @@ resource "aws_subnet" "public_subnet_b" {
 }
 
 resource "aws_subnet" "private_subnet_c" {
-  vpc_id            = data.aws_vpc.existing_vpc.id
+  vpc_id            = local.vpc_id
   cidr_block        = "10.0.3.0/24"
   availability_zone = "ap-northeast-2c"
 
@@ -41,7 +62,7 @@ resource "aws_subnet" "private_subnet_c" {
 }
 
 resource "aws_subnet" "private_subnet_b" {
-  vpc_id            = data.aws_vpc.existing_vpc.id
+  vpc_id            = local.vpc_id
   cidr_block        = "10.0.4.0/24"
   availability_zone = "ap-northeast-2b"
 
@@ -65,18 +86,33 @@ resource "aws_nat_gateway" "nat_gw" {
   }
 }
 
-# Internet Gateway
-resource "aws_internet_gateway" "igw" {
-  vpc_id = data.aws_vpc.existing_vpc.id
+# 기존 Internet Gateway 찾기 (기존 VPC 사용 시)
+data "aws_internet_gateways" "existing_igws" {
+  count = var.vpc_id != "" ? 1 : 0
+  filter {
+    name   = "attachment.vpc-id"
+    values = [local.vpc_id]
+  }
 }
+
+# Internet Gateway 생성 (새 VPC 생성 시 또는 기존 VPC에 IGW가 없을 때)
+resource "aws_internet_gateway" "igw" {
+  count  = var.vpc_id == "" || length(data.aws_internet_gateways.existing_igws) == 0 ? 1 : 0
+  vpc_id = local.vpc_id
+
+  tags = {
+    Name = "devops-1-igw"
+  }
+}
+
 
 # Route Tables
 resource "aws_route_table" "public_rt" {
-  vpc_id = data.aws_vpc.existing_vpc.id
+  vpc_id = local.vpc_id
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
+    gateway_id = local.igw_id
   }
 }
 
@@ -91,7 +127,7 @@ resource "aws_route_table_association" "public_rt_assoc_b" {
 }
 
 resource "aws_route_table" "private_rt" {
-  vpc_id = data.aws_vpc.existing_vpc.id
+  vpc_id = local.vpc_id
 
   route {
     cidr_block     = "0.0.0.0/0"
@@ -127,7 +163,7 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow SSH, HTTP, and Flask app port"
-  vpc_id      = data.aws_vpc.existing_vpc.id
+  vpc_id      = local.vpc_id
 
   ingress {
     from_port   = 22
@@ -161,7 +197,7 @@ resource "aws_security_group" "web_sg" {
 resource "aws_security_group" "alb_sg" {
   name        = "alb-sg"
   description = "Allow HTTP to ALB"
-  vpc_id      = data.aws_vpc.existing_vpc.id
+  vpc_id      = local.vpc_id
 
   ingress {
     from_port   = 80
@@ -185,7 +221,7 @@ resource "aws_security_group" "alb_sg" {
 resource "aws_security_group" "rds_sg" {
   name        = "rds-sg"
   description = "Allow MySQL from EC2"
-  vpc_id      = data.aws_vpc.existing_vpc.id
+  vpc_id      = local.vpc_id
 
   ingress {
     from_port       = 3306
@@ -280,7 +316,7 @@ resource "aws_lb_target_group" "app_tg" {
   name     = "app-tg"
   port     = 5000
   protocol = "HTTP"
-  vpc_id   = data.aws_vpc.existing_vpc.id
+  vpc_id   = local.vpc_id
 
   health_check {
     path                = "/"
