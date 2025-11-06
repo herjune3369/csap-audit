@@ -122,13 +122,13 @@ async def process_with_llm(file_path, system_type="Linux"):
         
         # 4단계: LLM 배치 호출
         logger.info("🔄 4단계: LLM 배치 호출 중...")
-        llm_responses = await llm_caller.batch_call(prompts)
+        llm_responses = await llm_caller.process_prompts_batch(prompts)
         logger.info(f"✅ {len(llm_responses)}개 LLM 응답 수신 완료")
         
         # 5단계: 리포트 생성기 초기화 및 강화된 항목 생성
         logger.info("🔄 5단계: 리포트 생성 중...")
         report_generator = LLMReportGenerator()
-        enhanced_items = report_generator.enhance_items_with_llm(items, llm_responses, system_type)
+        enhanced_items = report_generator.enhance_items_with_llm_responses(items, llm_responses, system_type)
         logger.info(f"✅ {len(enhanced_items)}개 항목 강화 완료")
         
         return enhanced_items

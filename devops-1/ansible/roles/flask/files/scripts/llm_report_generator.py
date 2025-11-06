@@ -336,6 +336,95 @@ class LLMReportGenerator:
             adjusted_width = min(max_length + 2, 20)
             worksheet.column_dimensions[column_letter].width = adjusted_width
     
+    def enhance_items_with_llm_responses(self, items: List[Dict[str, Any]], llm_responses: List[Dict[str, Any]], system_type: str = "Linux") -> List[Dict[str, Any]]:
+        """
+        LLM 응답을 사용하여 항목을 강화
+        
+        Args:
+            items: 원본 진단 항목 리스트
+            llm_responses: LLM 응답 리스트 (process_prompts_batch의 결과)
+            system_type: 시스템 타입
+            
+        Returns:
+            강화된 항목 리스트
+        """
+        enhanced_items = []
+        
+        # LLM 응답을 CCE_ID로 인덱싱
+        llm_dict = {}
+        for response in llm_responses:
+            cce_id = response.get('CCE_ID', '')
+            llm_response = response.get('llm_response', {})
+            llm_dict[cce_id] = llm_response
+        
+        # 각 항목에 LLM 응답 결합
+        for i, item in enumerate(items, 1):
+            cce_id = item.get('CCE_ID', '')
+            llm_response = llm_dict.get(cce_id, {})
+            
+            # LLM 응답에서 데이터 추출
+            if llm_response.get('success', False):
+                llm_data = llm_response.get('data', {})
+                detail = llm_data.get('상세해설', '')
+                actions = llm_data.get('조치방법', [])
+                
+                # 조치방법을 문자열로 변환
+                if isinstance(actions, list):
+                    action_text = '\n'.join([f"{idx+1}. {action}" for idx, action in enumerate(actions)])
+                else:
+                    action_text = str(actions) if actions else ''
+                
+                # 해설과 조치방법 통합
+                combined_action = f"해설: {detail}\n\n조치방법:\n{action_text}" if detail else f"조치방법:\n{action_text}"
+            else:
+                # LLM 처리 실패 시 기본 정보 사용
+                error_msg = llm_response.get('error', 'LLM 처리 실패')
+                combined_action = f"해설: {error_msg}\n\n조치방법: {item.get('개선방안', item.get('remediation', '기본 조치방법을 참고하세요'))}"
+            
+            # 강화된 항목 생성
+            enhanced_item = {
+                '시스템': system_type,
+                '분류': self._get_classification(cce_id),
+                'CCE_ID': cce_id,
+                '점검항목': item.get('점검항목', item.get('항목', '')),
+                '중요도': self._get_importance(item.get('결과', '')),
+                '결과': item.get('결과', ''),
+                '현황': item.get('현황', item.get('detail', '')),
+                '개선방안': item.get('개선방안', item.get('remediation', '')),
+                '조치방법': combined_action
+            }
+            
+            enhanced_items.append(enhanced_item)
+            logger.info(f"항목 강화 완료: {i}/{len(items)} - {cce_id}")
+        
+        return enhanced_items
+    
+    def _get_classification(self, cce_id: str) -> str:
+        """CCE_ID로부터 분류 추출"""
+        if not cce_id:
+            return '기타'
+        if 'ACCOUNT' in cce_id.upper() or '계정' in cce_id:
+            return '계정 관리'
+        elif 'FILE' in cce_id.upper() or '파일' in cce_id:
+            return '파일 권한'
+        elif 'SERVICE' in cce_id.upper() or '서비스' in cce_id:
+            return '서비스 관리'
+        elif 'PATCH' in cce_id.upper() or '패치' in cce_id:
+            return '패치 관리'
+        else:
+            return '기타'
+    
+    def _get_importance(self, result: str) -> str:
+        """결과로부터 중요도 추출"""
+        if result == '양호':
+            return '낮음'
+        elif result == '취약':
+            return '높음'
+        elif result == '정보':
+            return '중간'
+        else:
+            return '중간'
+    
     async def process_system_file(self, json_file_path: str) -> str:
         """시스템별 JSON 파일을 처리하여 Excel 보고서 생성"""
         try:
