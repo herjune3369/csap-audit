@@ -305,13 +305,24 @@
         </div>
 
         <!-- 다운로드 섹션 -->
-        <div class="download-section" id="downloadSection">
+        {% if download_url %}
+        <div class="download-section" id="downloadSection" style="display: block;">
             <h3>✅ 리포트 생성 완료!</h3>
             <p>CSAP 양식 기반 Excel 리포트가 생성되었습니다.</p>
+            <p><small>파일명: {{ report_filename }}</small></p>
             <a href="{{ download_url }}" class="download-btn" download>
                 📥 Excel 리포트 다운로드
             </a>
         </div>
+        {% else %}
+        <div class="download-section" id="downloadSection" style="display: none;">
+            <h3>✅ 리포트 생성 완료!</h3>
+            <p>CSAP 양식 기반 Excel 리포트가 생성되었습니다.</p>
+            <a href="#" class="download-btn" download>
+                📥 Excel 리포트 다운로드
+            </a>
+        </div>
+        {% endif %}
 
         <!-- 기능 소개 -->
         <div class="features">
@@ -422,9 +433,10 @@
             }, 1500); // 1.5초마다 업데이트
         });
 
-        // 성공 시 다운로드 섹션 표시
-        {% if success %}
+        // 다운로드 URL이 있으면 다운로드 섹션 표시
+        {% if download_url %}
             downloadSection.style.display = 'block';
+            progressContainer.style.display = 'none';
         {% endif %}
 
         // 페이지 로드 시 초기화
